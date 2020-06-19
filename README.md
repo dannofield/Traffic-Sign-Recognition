@@ -99,26 +99,119 @@ plt.show()
 
 ### Design and Test a Model Architecture
 
+Here we can see an exploratory visualization of the images and their labels according to their indexes before grayscaling.
+![alt text][image4]
+
 #### 1. Describe how you preprocessed the image data. What techniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, and provide example images of the additional data. Then describe the characteristics of the augmented training set like number of images in the set, number of images for each class, etc.)
 
-As a first step, I decided to convert the images to grayscale because ...
+I tryed first to test the model using full color images but I could not reach more than 91% accuracy. So I decided to convert
+the images to grayscale first before normalizing them.
 
-Here is an example of a traffic sign image before and after grayscaling.
+Here is an example of a traffic sign image after grayscaling.
 
-![alt text][image4]
 ![alt text][image5]
 
-As a last step, I normalized the image data because ...
+As a last step, I normalized the image data because Given the use of small weights in the model and the use of error between predictions and expected values, the scale of inputs and outputs used to train the model are an important factor. Unscaled input variables can result in a slow or unstable learning process, whereas unscaled target variables on regression problems can result in exploding gradients causing the learning process to fail.
 
-I decided to generate additional data because ... 
+Data preparation involves using techniques such as the normalization and standardization to rescale input and output variables [prior to training a neural network model](https://machinelearningmastery.com/how-to-improve-neural-network-stability-and-modeling-performance-with-data-scaling/)
 
-To add more data to the the data set, I used the following techniques because ... 
+#### I generated additional data for training
 
-Here is an example of an original image and an augmented image:
+I decided to generate additional data because as you can see on the histograms, we have few training images from some labels
+To add more data to the the data set, I used the following techniques to increase the number of images with labels lower than 800 units.
+
+
+```python
+def random_translate(img):
+    rows,cols,_ = img.shape
+    
+    # allow translation up to px pixels in x and y directions
+    px = 2
+    dx,dy = np.random.randint(-px,px,2)
+
+    M = np.float32([[1,0,dx],[0,1,dy]])
+    dst = cv2.warpAffine(img,M,(cols,rows))
+    
+    dst = dst[:,:,np.newaxis]
+    
+    return dst
+
+def random_scaling(img):   
+    rows,cols,_ = img.shape
+
+    # transform limits
+    px = np.random.randint(-2,2)
+
+    # ending locations
+    pts1 = np.float32([[px,px],[rows-px,px],[px,cols-px],[rows-px,cols-px]])
+
+    # starting locations (4 corners)
+    pts2 = np.float32([[0,0],[rows,0],[0,cols],[rows,cols]])
+
+    M = cv2.getPerspectiveTransform(pts1,pts2)
+
+    dst = cv2.warpPerspective(img,M,(rows,cols))
+    
+    dst = dst[:,:,np.newaxis]
+    
+    return dst
+
+def random_warp(img):
+    
+    rows,cols,_ = img.shape
+
+    # random scaling coefficients
+    rndx = np.random.rand(3) - 0.5
+    rndx *= cols * 0.06   # this coefficient determines the degree of warping
+    rndy = np.random.rand(3) - 0.5
+    rndy *= rows * 0.06
+
+    # 3 starting points for transform, 1/4 way from edges
+    x1 = cols/4
+    x2 = 3*cols/4
+    y1 = rows/4
+    y2 = 3*rows/4
+
+    pts1 = np.float32([[y1,x1],
+                       [y2,x1],
+                       [y1,x2]])
+    pts2 = np.float32([[y1+rndy[0],x1+rndx[0]],
+                       [y2+rndy[1],x1+rndx[1]],
+                       [y1+rndy[2],x2+rndx[2]]])
+
+    M = cv2.getAffineTransform(pts1,pts2)
+
+    dst = cv2.warpAffine(img,M,(cols,rows))
+    
+    dst = dst[:,:,np.newaxis]
+    
+    return dst
+
+def random_brightness(img):
+    shifted = img + 1.0   # shift to (0,2) range
+    img_max_value = max(shifted.flatten())
+    max_coef = 2.0/img_max_value
+    min_coef = max_coef - 0.1
+    coef = np.random.uniform(min_coef, max_coef)
+    dst = shifted * coef - 1.0
+    return dst
+
+```
+
+So I took one image as an example and generated images base on that one.
+
+```python
+for ...
+    new_img = random_translate( random_scaling( random_warp( random_brightness(image_from_original_dataset))))
+    X_train = np.concatenate((X_train, [new_img]), axis=0)
+```
+##### Here is an example of an original image and an augmented images:
+
+![alt text][image5]
 
 ![alt text][image6]
 
-The difference between the original data set and the augmented data set is the following ... 
+You can see the difference between the original data set and the augmented data set before creating the images and after. 
 
 
 #### 2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
@@ -208,3 +301,6 @@ For the second image ...
 ### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
 #### 1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
 
+# References
+Rescale input and output variables [prior to training a neural network model](https://machinelearningmastery.com/how-to-improve-neural-network-stability-and-modeling-performance-with-data-scaling/) 
+https://machinelearningmastery.com/how-to-improve-neural-network-stability-and-modeling-performance-with-data-scaling/
