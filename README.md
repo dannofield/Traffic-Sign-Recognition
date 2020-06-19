@@ -19,9 +19,12 @@ The goals / steps of this project are the following:
 [//]: # (Image References)
 
 [image1]: ./images_result/histogram_y_train.png "Visualization Train Images [Qty Vs Labels]"
-[image1]: ./images_result/histogram_y_valid.png "Visualization Valid Images [Qty Vs Labels]"
-[image1]: ./images_result/histogram_y_test.png "Visualization Test Images [Qty Vs Labels]"
-
+[image2]: ./images_result/histogram_y_valid.png "Visualization Valid Images [Qty Vs Labels]"
+[image3]: ./images_result/histogram_y_test.png "Visualization Test Images [Qty Vs Labels]"
+[image4]: ./images_result/visualizationImages.png "Original Images"
+[image5]: ./images_result/originalImageGrayNormalized.png "Gray scaled image"
+[image6]: ./images_result/augmentedGrayImages.png "Augmented images"
+[image7]: ./images_result/visualizationNewImages.png "New images"
 
 ## Rubric Points
 ### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
@@ -48,9 +51,17 @@ signs data set:
 
 #### 2. Include an exploratory visualization of the dataset.
 
-Here is an exploratory visualization of the data set. It is a bar chart showing how the data ...
+Here is an exploratory visualization of the data set. It is a bar chart showing the number of images we have per label.
+We can see that they are not the same number, this could lead us to problems when we start to train our model.
 
+##### Number of Training images per label
 ![alt text][image1]
+
+##### Number of Valid images per label
+![alt text][image2]
+
+##### Number of Test images per label
+![alt text][image3]
 
 ### Design and Test a Model Architecture
 
@@ -60,7 +71,8 @@ As a first step, I decided to convert the images to grayscale because ...
 
 Here is an example of a traffic sign image before and after grayscaling.
 
-![alt text][image2]
+![alt text][image4]
+![alt text][image5]
 
 As a last step, I normalized the image data because ...
 
@@ -70,7 +82,7 @@ To add more data to the the data set, I used the following techniques because ..
 
 Here is an example of an original image and an augmented image:
 
-![alt text][image3]
+![alt text][image6]
 
 The difference between the original data set and the augmented data set is the following ... 
 
@@ -123,8 +135,7 @@ If a well known architecture was chosen:
 
 Here are five German traffic signs that I found on the web:
 
-![alt text][image4] ![alt text][image5] ![alt text][image6] 
-![alt text][image7] ![alt text][image8]
+![alt text][image7]
 
 The first image might be difficult to classify because ...
 
