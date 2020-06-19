@@ -32,22 +32,38 @@ The goals / steps of this project are the following:
 ---
 ### Writeup / README
 
-#### 1. Provide a Writeup / README that includes all the rubric points and how you addressed each one. You can submit your writeup as markdown or pdf. You can use this template as a guide for writing the report. The submission includes the project code.
-
-You're reading it! and here is a link to my [project code](https://github.com/udacity/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.ipynb)
+You're reading it! and here is a link to my [project code](https://github.com/dannofield/Traffic-Sign-Recognition)
 
 ### Data Set Summary & Exploration
 
-#### 1. Provide a basic summary of the data set. In the code, the analysis should be done using python, numpy and/or pandas methods rather than hardcoding results manually.
-
-I used the pandas library to calculate summary statistics of the traffic
+I used the numpy library to calculate summary statistics of the traffic
 signs data set:
 
-* The size of training set is ?
-* The size of the validation set is ?
-* The size of test set is ?
-* The shape of a traffic sign image is ?
-* The number of unique classes/labels in the data set is ?
+```python
+### Replace each question mark with the appropriate value. 
+### Use python, pandas or numpy methods rather than hard coding the results
+
+# TODO: Number of training examples
+n_train = len(X_train)
+
+# TODO: Number of validation examples
+n_validation = len(X_valid)
+
+# TODO: Number of testing examples.
+n_test = len(X_test)
+
+# TODO: What's the shape of an traffic sign image?
+image_shape = X_train[0].shape
+
+# TODO: How many unique classes/labels there are in the dataset.
+n_classes = len(labels)
+```
+
+* The size of training set is 34799
+* The size of the validation set is 4410
+* The size of test set is 12630
+* The shape of a traffic sign image is 32x32x3
+* The number of unique classes/labels in the data set is 43
 
 #### 2. Include an exploratory visualization of the dataset.
 
