@@ -27,6 +27,7 @@ The goals / steps of this project are the following:
 [image7]: ./images_result/histogram_y_trainBefore.png "New images"
 [image8]: ./images_result/histogram_y_trainAfter.png "New images"
 [image9]: ./images_result/visualizationNewImages.png "New images"
+[image10]: ./images_result/Model used.png "Model used"
 
 ## Rubric Points
 ### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
@@ -250,14 +251,19 @@ Original Dataset | Augmented data set
 #### 2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
 
 My final model consisted of the following layers:
+![alt text][image10]
 
 | Layer         		|     Description	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| Input         		| 32x32x3 RGB image   							| 
-| Convolution 3x3     	| 1x1 stride, same padding, outputs 32x32x64 	|
+| Input         		| 32x32x1 Gray & normalized image   			| 
+| Convolution 3x3     	| 1x1 stride, same padding, outputs 28x28x6 	|
 | RELU					|												|
-| Max pooling	      	| 2x2 stride,  outputs 16x16x64 				|
-| Convolution 3x3	    | etc.      									|
+| Max pooling	      	| 2x2 stride,  outputs 14x14x6  				|
+| Convolution 3x3	    | outputs 10x10x16   							|
+| RELU					|												|
+| Max pooling	      	| 2x2 stride,  outputs 5x5x16     				|
+| Convolution 3x3	    | outputs 1x1x400   							|
+| RELU					|												|
 | Fully connected		| etc.        									|
 | Softmax				| etc.        									|
 |						|												|
@@ -529,3 +535,7 @@ For the second image ...
 # References
 Rescale input and output variables [prior to training a neural network model](https://machinelearningmastery.com/how-to-improve-neural-network-stability-and-modeling-performance-with-data-scaling/) 
 https://machinelearningmastery.com/how-to-improve-neural-network-stability-and-modeling-performance-with-data-scaling/
+
+https://towardsdatascience.com/beginning-my-journey-in-self-driving-car-udacity-nano-degree-a39d898658a2
+
+https://github.com/jeremy-shannon/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.ipynb
