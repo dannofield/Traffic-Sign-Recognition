@@ -27,7 +27,7 @@ The goals / steps of this project are the following:
 [image7]: ./images_result/histogram_y_trainBefore.png "New images"
 [image8]: ./images_result/histogram_y_trainAfter.png "New images"
 [image9]: ./images_result/visualizationNewImages.png "New images"
-[image10]: ./images_result/Model used.png "Model used"
+[image10]: "./images_result/Model used.png" "Model used"
 
 ## Rubric Points
 ### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
@@ -251,6 +251,7 @@ Original Dataset | Augmented data set
 #### 2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
 
 My final model consisted of the following layers:
+
 ![alt text][image10]
 
 | Layer         		|     Description	        					| 
