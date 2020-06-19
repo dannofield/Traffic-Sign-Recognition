@@ -24,7 +24,9 @@ The goals / steps of this project are the following:
 [image4]: ./images_result/visualizationImages.png "Original Images"
 [image5]: ./images_result/originalImageGrayNormalized.png "Gray scaled image"
 [image6]: ./images_result/augmentedGrayImages.png "Augmented images"
-[image7]: ./images_result/visualizationNewImages.png "New images"
+[image7]: ./images_result/histogram_y_trainBefore.png "New images"
+[image8]: ./images_result/histogram_y_trainAfter.png "New images"
+[image9]: ./images_result/visualizationNewImages.png "New images"
 
 ## Rubric Points
 ### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
@@ -211,8 +213,10 @@ for ...
 
 ![alt text][image6]
 
-You can see the difference between the original data set and the augmented data set before creating the images and after. 
-
+You can see the difference between the original data set before creating the images and the augmented data set after. 
+Original Dataset | Augmented data set
+------------ | -------------
+![alt text][image7] | ![alt text][image8]
 
 #### 2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
 
