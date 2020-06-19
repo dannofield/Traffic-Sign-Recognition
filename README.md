@@ -214,7 +214,7 @@ for ...
 ![alt text][image6]
 
 You can see the difference between the original data set before creating the images and the augmented data set after. 
-
+```
 creating images...
 Creating 620 random images for label Speed limit (20km/h)
 Creating 440 random images for label End of speed limit (80km/h)
@@ -242,7 +242,7 @@ Creating 530 random images for label Keep left
 Creating 500 random images for label Roundabout mandatory
 Creating 590 random images for label End of no passing
 Creating 590 random images for label End of no passing by vehicles over 3.5 metric tons
-
+```
 Original Dataset | Augmented data set
 ------------ | -------------
 ![alt text][image7] | ![alt text][image8]
