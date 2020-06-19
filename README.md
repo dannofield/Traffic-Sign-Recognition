@@ -27,7 +27,7 @@ The goals / steps of this project are the following:
 [image7]: ./images_result/histogram_y_trainBefore.png "New images"
 [image8]: ./images_result/histogram_y_trainAfter.png "New images"
 [image9]: ./images_result/visualizationNewImages.png "New images"
-[image10]: "./images_result/Model used.png" "Model used"
+[image10]: ./images_result/Modelused.png "Model used"
 
 ## Rubric Points
 ### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
