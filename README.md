@@ -254,6 +254,8 @@ My final model consisted of the following layers:
 
 ![alt text][image10]
 
+(image took it from https://towardsdatascience.com/beginning-my-journey-in-self-driving-car-udacity-nano-degree-a39d898658a2)
+
 | Layer         		|     Description	        					| 
 |:---------------------:|:---------------------------------------------:| 
 | Input         		| 32x32x1 Gray & normalized image   			| 
