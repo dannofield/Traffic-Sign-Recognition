@@ -65,10 +65,28 @@ n_classes = len(labels)
 * The shape of a traffic sign image is 32x32x3
 * The number of unique classes/labels in the data set is 43
 
-#### 2. Include an exploratory visualization of the dataset.
+#### Exploratory visualization of the dataset.
 
 Here is an exploratory visualization of the data set. It is a bar chart showing the number of images we have per label.
 We can see that they are not the same number, this could lead us to problems when we start to train our model.
+
+```python
+# histogram of label frequency
+hist, bins = np.histogram(y_train, bins=n_classes)
+
+fig, ax = plt.subplots(figsize=(20,20))    
+width = 0.7 # the width of the bars 
+ind = np.arange(n_classes)  # the x locations for the groups
+ax.barh(ind, hist, width, align='edge',color="blue")
+ax.set_yticks(ind+width/2)
+ax.set_yticklabels(labels.index, minor=False)
+for i, v in enumerate(hist):
+    ax.text(v + 3, i + .25, str(v), color='blue', fontweight='bold')
+plt.title(str(n_train) + ' Training Images')
+plt.xlabel('# of Training Images')
+plt.ylabel('Classes')
+plt.show()
+```
 
 ##### Number of Training images per label
 ![alt text][image1]
