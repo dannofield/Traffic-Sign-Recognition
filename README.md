@@ -214,6 +214,35 @@ for ...
 ![alt text][image6]
 
 You can see the difference between the original data set before creating the images and the augmented data set after. 
+
+creating images...
+Creating 620 random images for label Speed limit (20km/h)
+Creating 440 random images for label End of speed limit (80km/h)
+Creating 110 random images for label Stop
+Creating 260 random images for label No vehicles
+Creating 440 random images for label Vehicles over 3.5 metric tons prohibited
+Creating 620 random images for label Dangerous curve to the left
+Creating 500 random images for label Dangerous curve to the right
+Creating 530 random images for label Double curve
+Creating 470 random images for label Bumpy road
+Creating 350 random images for label Slippery road
+Creating 560 random images for label Road narrows on the right
+Creating 260 random images for label Traffic signals
+Creating 590 random images for label Pedestrians
+Creating 320 random images for label Children crossing
+Creating 560 random images for label Bicycles crossing
+Creating 410 random images for label Beware of ice/snow
+Creating 110 random images for label Wild animals crossing
+Creating 590 random images for label End of all speed and passing limits
+Creating 201 random images for label Turn right ahead
+Creating 440 random images for label Turn left ahead
+Creating 470 random images for label Go straight or right
+Creating 620 random images for label Go straight or left
+Creating 530 random images for label Keep left
+Creating 500 random images for label Roundabout mandatory
+Creating 590 random images for label End of no passing
+Creating 590 random images for label End of no passing by vehicles over 3.5 metric tons
+
 Original Dataset | Augmented data set
 ------------ | -------------
 ![alt text][image7] | ![alt text][image8]
@@ -236,16 +265,208 @@ My final model consisted of the following layers:
  
 
 
-#### 3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
+#### 3. How I trained my model. Batch size, number of epochs and learning rate.
+The hyperparameters i ended up using were
+```python
+EPOCHS = 60
+BATCH_SIZE = 100
 
-To train the model, I used an ....
+rate = 0.0009
+```
 
 #### 4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
-My final model results were:
-* training set accuracy of ?
-* validation set accuracy of ? 
-* test set accuracy of ?
+#### My final model results were:
+#### training set  & validation accuracy
+Training...EPOCHS: 60 BATCH_SIZE: 100 rate: 0.0009 Iterations: 464.8
+
+EPOCH 1 ...
+Validation Accuracy = 0.775
+
+EPOCH 2 ...
+Validation Accuracy = 0.846
+
+EPOCH 3 ...
+Validation Accuracy = 0.883
+
+EPOCH 4 ...
+Validation Accuracy = 0.893
+
+EPOCH 5 ...
+Validation Accuracy = 0.905
+
+EPOCH 6 ...
+Validation Accuracy = 0.907
+
+EPOCH 7 ...
+Validation Accuracy = 0.905
+
+EPOCH 8 ...
+Validation Accuracy = 0.910
+
+EPOCH 9 ...
+Validation Accuracy = 0.912
+
+EPOCH 10 ...
+Validation Accuracy = 0.920
+
+EPOCH 11 ...
+Validation Accuracy = 0.922
+
+EPOCH 12 ...
+Validation Accuracy = 0.916
+
+EPOCH 13 ...
+Validation Accuracy = 0.915
+
+EPOCH 14 ...
+Validation Accuracy = 0.920
+
+EPOCH 15 ...
+Validation Accuracy = 0.929
+
+EPOCH 16 ...
+Validation Accuracy = 0.930
+
+EPOCH 17 ...
+Validation Accuracy = 0.936
+
+EPOCH 18 ...
+Validation Accuracy = 0.933
+
+EPOCH 19 ...
+Validation Accuracy = 0.925
+
+EPOCH 20 ...
+Validation Accuracy = 0.930
+
+EPOCH 21 ...
+Validation Accuracy = 0.934
+
+EPOCH 22 ...
+Validation Accuracy = 0.931
+
+EPOCH 23 ...
+Validation Accuracy = 0.927
+
+EPOCH 24 ...
+Validation Accuracy = 0.944
+
+EPOCH 25 ...
+Validation Accuracy = 0.936
+
+EPOCH 26 ...
+Validation Accuracy = 0.938
+
+EPOCH 27 ...
+Validation Accuracy = 0.936
+
+EPOCH 28 ...
+Validation Accuracy = 0.942
+
+EPOCH 29 ...
+Validation Accuracy = 0.935
+
+EPOCH 30 ...
+Validation Accuracy = 0.936
+
+EPOCH 31 ...
+Validation Accuracy = 0.935
+
+EPOCH 32 ...
+Validation Accuracy = 0.935
+
+EPOCH 33 ...
+Validation Accuracy = 0.937
+
+EPOCH 34 ...
+Validation Accuracy = 0.937
+
+EPOCH 35 ...
+Validation Accuracy = 0.939
+
+EPOCH 36 ...
+Validation Accuracy = 0.933
+
+EPOCH 37 ...
+Validation Accuracy = 0.945
+
+EPOCH 38 ...
+Validation Accuracy = 0.946
+
+EPOCH 39 ...
+Validation Accuracy = 0.939
+
+EPOCH 40 ...
+Validation Accuracy = 0.938
+
+EPOCH 41 ...
+Validation Accuracy = 0.933
+
+EPOCH 42 ...
+Validation Accuracy = 0.943
+
+EPOCH 43 ...
+Validation Accuracy = 0.945
+
+EPOCH 44 ...
+Validation Accuracy = 0.948
+
+EPOCH 45 ...
+Validation Accuracy = 0.944
+
+EPOCH 46 ...
+Validation Accuracy = 0.941
+
+EPOCH 47 ...
+Validation Accuracy = 0.941
+
+EPOCH 48 ...
+Validation Accuracy = 0.943
+
+EPOCH 49 ...
+Validation Accuracy = 0.950
+
+EPOCH 50 ...
+Validation Accuracy = 0.945
+
+EPOCH 51 ...
+Validation Accuracy = 0.942
+
+EPOCH 52 ...
+Validation Accuracy = 0.943
+
+EPOCH 53 ...
+Validation Accuracy = 0.945
+
+EPOCH 54 ...
+Validation Accuracy = 0.948
+
+EPOCH 55 ...
+Validation Accuracy = 0.947
+
+EPOCH 56 ...
+Validation Accuracy = 0.932
+
+EPOCH 57 ...
+Validation Accuracy = 0.946
+
+EPOCH 58 ...
+Validation Accuracy = 0.946
+
+EPOCH 59 ...
+Validation Accuracy = 0.949
+
+EPOCH 60 ...
+Validation Accuracy = 0.951
+
+Model saved
+
+
+#### test set accuracy of
+INFO:tensorflow:Restoring parameters from ./lenet
+Test Accuracy = 0.934
+
 
 If an iterative approach was chosen:
 * What was the first architecture that was tried and why was it chosen?
@@ -266,7 +487,7 @@ If a well known architecture was chosen:
 
 Here are five German traffic signs that I found on the web:
 
-![alt text][image7]
+![alt text][image9]
 
 The first image might be difficult to classify because ...
 
