@@ -549,9 +549,10 @@ If a well known architecture was chosen:
 
 ### Test a Model on New Images
 
-#### 1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.
+I tool pictures from the [German traffic signs website](http://benchmark.ini.rub.de/?section=gtsrb&subsection=dataset) to predict the traffic sign type.
+All images are down-sampled or upsampled to 32x32 (dataset samples sizes vary from 15x15 to 250x250)
 
-Here are five German traffic signs that I found on the web:
+Here are some German traffic signs that I took from their website the web:
 
 ![alt text][image9]
 
