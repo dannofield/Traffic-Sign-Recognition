@@ -267,8 +267,8 @@ My final model consisted of the following layers:
 | Max pooling	      	| 2x2 stride,  outputs 5x5x16     				|
 | Convolution 3x3	    | outputs 1x1x400   							|
 | RELU					|												|
-| Fully connected		| etc.        									|
-| Softmax				| etc.        									|
+| Fully connected		|            									|
+| Softmax				|           									|
 |						|												|
 |						|												|
  
@@ -283,7 +283,64 @@ BATCH_SIZE = 100
 rate = 0.0009
 ```
 
-#### 4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
+#### 4. Approach for finding a solution
+
+I opted for converting all the images to gray scales since the article [Sermanet/LeCunn traffic sign classification](http://yann.lecun.com/exdb/publis/pdf/sermanet-ijcnn-11.pdf) mentions that ignoring color information could  increase network’s capacity and depth. I also found a better perfonace than using color images.
+
+The architecture I have used looks like:
+
+```python
+def LeNet(x):
+    # Hyperparameters
+    mu = 0
+    sigma = 0.1
+    
+    # TODO: Layer 1: Convolutional. Input = 32x32x1. Output = 28x28x6.
+    W1 = tf.Variable(tf.truncated_normal(shape=(5, 5, 1, 6), mean = mu, stddev = sigma), name="W1")
+    x = tf.nn.conv2d(x, W1, strides=[1, 1, 1, 1], padding='VALID')
+    b1 = tf.Variable(tf.zeros(6), name="b1")
+    x = tf.nn.bias_add(x, b1)
+    print("layer 1 shape:",x.get_shape())
+
+    # TODO: Activation.
+    x = tf.nn.relu(x)
+    
+    # TODO: Pooling. Input = 28x28x6. Output = 14x14x6.
+    x = tf.nn.max_pool(x, ksize=[1, 2, 2, 1], strides=[1, 2, 2, 1], padding='VALID')
+    layer1 = x
+    
+    # TODO: Layer 2: Convolutional. Output = 10x10x16.
+    W2 = tf.Variable(tf.truncated_normal(shape=(5, 5, 6, 16), mean = mu, stddev = sigma), name="W2")
+    x = tf.nn.conv2d(x, W2, strides=[1, 1, 1, 1], padding='VALID')
+    b2 = tf.Variable(tf.zeros(16), name="b2")
+    x = tf.nn.bias_add(x, b2)
+                     
+    # TODO: Activation.
+    x = tf.nn.relu(x)
+
+    # TODO: Pooling. Input = 10x10x16. Output = 5x5x16.
+    x = tf.nn.max_pool(x, ksize=[1, 2, 2, 1], strides=[1, 2, 2, 1], padding='VALID')
+    layer2 = x
+    
+    # TODO: Layer 3: Convolutional. Output = 1x1x400.
+    W3 = tf.Variable(tf.truncated_normal(shape=(5, 5, 16, 400), mean = mu, stddev = sigma), name="W3")
+    x = tf.nn.conv2d(x, W3, strides=[1, 1, 1, 1], padding='VALID')
+    b3 = tf.Variable(tf.zeros(400), name="b3")
+    x = tf.nn.bias_add(x, b3)
+                     
+    # TODO: Activation.
+    x = tf.nn.relu(x)
+    layer3 = x
+
+    # TODO: Flatten. Input = 5x5x16. Output = 400.
+    layer2flat = flatten(layer2)
+    print("layer2flat shape:",layer2flat.get_shape())
+    
+    # Flatten x. Input = 1x1x400. Output = 400.
+    xflat = flatten(x)
+    print("xflat shape:",xflat.get_shape())
+```
+
 
 #### My final model results were:
 #### training set  & validation accuracy
