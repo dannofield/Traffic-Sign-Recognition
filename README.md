@@ -551,12 +551,49 @@ If a well known architecture was chosen:
 
 I tool pictures from the [German traffic signs website](http://benchmark.ini.rub.de/?section=gtsrb&subsection=dataset) to predict the traffic sign type.
 All images are down-sampled or upsampled to 32x32 (dataset samples sizes vary from 15x15 to 250x250)
+```python
+german_images = []
+german_labels = [20,7,3,3,14,35,7,10,9,3]
+
+size = (32, 32)
+
+for i, img in enumerate(glob('GERMAN_IMG_DATABASE/0000*.ppm')):
+    image = cv2.imread(img)    
+    
+    #Not all images are 32x32
+    image = cv2.resize(image,size)
+    #print('Resized Dimensions : ',image.shape)    
+    german_images.append(image)
+```
 
 Here are some German traffic signs that I took from their website the web:
 
 ![alt text][image9]
 
-The first image might be difficult to classify because ...
+```python
+import tensorflow as tf
+
+#Gray scale
+german_images = np.sum(german_images/3, axis=3, keepdims=True)
+#Normalize them
+german_images = (german_images - 128)/128 
+
+### Calculate the accuracy for these 5 new images. 
+with tf.Session() as sess:
+    #sess.run(tf.global_variables_initializer())
+    saver.restore(sess, tf.train.latest_checkpoint('.'))
+
+    test_accuracy = evaluate(german_images, german_labels)
+    print("Test Accuracy = {:.3f}".format(test_accuracy))
+            
+```
+
+And the result was 100% accurate
+```
+INFO:tensorflow:Restoring parameters from ./lenet
+Test Accuracy = 1.000
+
+```
 
 #### 2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
