@@ -600,14 +600,15 @@ Test Accuracy = 1.000
 
 Here are the results of the prediction:
 
-| Image			        |     Prediction	        					| 
-|:---------------------:|:---------------------------------------------:| 
-| Stop Sign      		| Stop sign   									| 
-| U-turn     			| U-turn 										|
-| Yield					| Yield											|
-| 100 km/h	      		| Bumpy Road					 				|
-| Slippery Road			| Slippery Road      							|
-
+| Image			                                |     Prediction	        					| Percentage Prediction|
+|:---------------------------------------------:|:---------------------------------------------:|:---------------------
+| Dangerous Curve to the right     	            | Dangerous Curve to the right  	            |100%|
+| No passing                                    | No passing                                    |100%|
+| Speed limit 60Km/h				            | Speed limit 60Km/h			            	|100%|
+| Speed limit 100Km/h     			            | Speed limit 100Km/h 				            |99.14%|
+| Ahead only			                        | Slippery Road         						|100%|
+| Stop	      		                            | Bumpy Road					 				|100%|
+| No passing for vehicles over 3.5 metric tons  | No passing for vehicles over 3.5 metric tons  |100%|
 
 The model was able to correctly guess 10 of the 10 traffic signs, which gives an accuracy of 100%.
 
