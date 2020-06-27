@@ -634,3 +634,6 @@ https://machinelearningmastery.com/how-to-improve-neural-network-stability-and-m
 https://towardsdatascience.com/beginning-my-journey-in-self-driving-car-udacity-nano-degree-a39d898658a2
 
 https://github.com/jeremy-shannon/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.ipynb
+
+https://github.com/viadanna/sdc-traffic-sign-classifier
+
