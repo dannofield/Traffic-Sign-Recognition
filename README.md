@@ -622,10 +622,30 @@ For all the images, the model was pretty sure what it was looking for. The top f
 ![alt text][image11]
 
 
+# Project Writeup
 
+The original model I was that we saw in our course. But even though I was able to get around 90% of accuracy in the first try, I was not able to make it go higher than that.
 
-### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
-#### 1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
+So the first thing I did was to convert the images to gray scale, since the article [Sermanet/LeCunn traffic sign classification](http://yann.lecun.com/exdb/publis/pdf/sermanet-ijcnn-11.pdf) mentions that ignoring color information could  increase network’s capacity and depth. But that didn´t improve the model by much. 
+
+Then I tryed to augment the data set and the accuracy got better but still under 93%. So I tried different models I found on the web and the one that I was able to get more than 93% during the training was the one that I ended up using.
+
+The hyperparameters i ended up using were
+```python
+EPOCHS = 60
+BATCH_SIZE = 100
+
+rate = 0.0009
+```
+Since the learning rate is relatively small, I chose more epochs to give the model time to learn. Also sometimes was getting more than 96% during the training but low accuracy on the test, or unconsistent accuracy on the traing (jumping up and down). 
+
+Those were signals that I was over/underfitting the model, until I found the apropiate batch size to stabilize the model while I was training it and to give close accuracy on the validation.
+
+The model was very accurate with new images I took from the german website.
+
+I tried to visualize the inner layers of the model (convolution 1 & 2) but I couldn't make it work even though I saw projects from students using the provided function properly. This is my very first project using TensorFlow and coudn´t figurate the error I was getting.
+
+I learned a lot with this project, I took me more time than what Udacity planned for but I really liked the challenge.
 
 # References
 Rescale input and output variables [prior to training a neural network model](https://machinelearningmastery.com/how-to-improve-neural-network-stability-and-modeling-performance-with-data-scaling/) 
